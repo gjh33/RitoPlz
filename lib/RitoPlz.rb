@@ -1,5 +1,6 @@
 require "RitoPlz/version"
 require "RitoPlz/configuration"
+require "RitoPlz/client"
 
 module RitoPlz
   class << self
