@@ -54,4 +54,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#game" do
+    subject { client.game }
+
+    it { is_expected.to be_a RitoPlz::API::Game }
+
+    it "creates a game api with the correct region" do
+      expect(RitoPlz::API::Game).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end

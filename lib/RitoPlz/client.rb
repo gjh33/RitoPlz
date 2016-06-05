@@ -2,6 +2,7 @@ require 'RitoPlz/API/champion'
 require 'RitoPlz/API/champion_mastery'
 require 'RitoPlz/API/current_game'
 require 'RitoPlz/API/featured_games'
+require 'RitoPlz/API/game'
 
 module RitoPlz
   class Client
@@ -23,6 +24,10 @@ module RitoPlz
 
     def featured_games
       RitoPlz::API::FeaturedGames.new(@region)
+    end
+
+    def game
+      RitoPlz::API::Game.new(@region)
     end
   end
 end
