@@ -65,4 +65,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#league" do
+    subject { client.league }
+
+    it { is_expected.to be_a RitoPlz::API::League }
+
+    it "creates a league api with the correct region" do
+      expect(RitoPlz::API::League).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end
