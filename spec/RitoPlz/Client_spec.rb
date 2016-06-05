@@ -21,4 +21,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#champion_mastery" do
+    subject { client.champion_mastery(0) }
+
+    it { is_expected.to be_a RitoPlz::API::ChampionMastery }
+
+    it "creats a champion mastery api with the correct region and player id" do
+      expect(RitoPlz::API::ChampionMastery).to receive(:new).with(test_region, 0)
+      subject
+    end
+  end
 end

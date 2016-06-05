@@ -1,4 +1,5 @@
 require 'RitoPlz/API/champion'
+require 'RitoPlz/API/champion_mastery'
 
 module RitoPlz
   class Client
@@ -8,6 +9,10 @@ module RitoPlz
 
     def champion
       RitoPlz::API::Champion.new(@region)
+    end
+
+    def champion_mastery(player_id)
+      RitoPlz::API::ChampionMastery.new(@region, player_id)
     end
   end
 end
