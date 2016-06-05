@@ -32,4 +32,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#current_game" do
+    subject { client.current_game }
+
+    it { is_expected.to be_a RitoPlz::API::CurrentGame }
+
+    it "creates a current game api with the correct region" do
+      expect(RitoPlz::API::CurrentGame).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end
