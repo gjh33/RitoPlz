@@ -43,4 +43,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#featured_games" do
+    subject { client.featured_games }
+
+    it { is_expected.to be_a RitoPlz::API::FeaturedGames }
+
+    it "creates a featured games api with the correct region" do
+      expect(RitoPlz::API::FeaturedGames).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end
