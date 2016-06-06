@@ -76,4 +76,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#static_data" do
+    subject { client.static_data }
+
+    it { is_expected.to be_a RitoPlz::API::StaticData }
+
+    it "creates a static data api with the correct region" do
+      expect(RitoPlz::API::StaticData).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end

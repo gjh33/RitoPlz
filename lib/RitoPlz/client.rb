@@ -4,6 +4,7 @@ require 'RitoPlz/API/current_game'
 require 'RitoPlz/API/featured_games'
 require 'RitoPlz/API/game'
 require 'RitoPlz/API/league'
+require 'RitoPlz/API/static_data'
 
 module RitoPlz
   class Client
@@ -33,6 +34,10 @@ module RitoPlz
 
     def league
       RitoPlz::API::League.new(@region)
+    end
+
+    def static_data
+      RitoPlz::API::StaticData.new(@region)
     end
   end
 end
