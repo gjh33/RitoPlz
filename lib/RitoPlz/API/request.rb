@@ -7,9 +7,10 @@ module RitoPlz
       attr_reader :path, :region
 
       #Use application configuration or use custom configuration
-      def initialize(region, path)
+      def initialize(region, path, params = {})
         @path = path
         @region = region
+        @type = params[:type] || :api
       end
 
       def get(query_params = {})
@@ -30,7 +31,15 @@ module RitoPlz
 
       def request_url(query_params = {})
         query_params[:api_key] = RitoPlz.configuration.api_key
-        "https://#{region}.api.pvp.net#{path}?#{URI.encode_www_form(query_params)}"
+
+        case @type
+        when :status
+          base_url = "https://status.leagueoflegends.com"
+        else
+          base_url = "https://#{region}.api.pvp.net"
+        end
+
+        base_url + path + "?#{URI.encode_www_form(query_params)}"
       end
 
       def verify_response!(response)

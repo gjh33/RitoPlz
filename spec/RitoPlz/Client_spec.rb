@@ -87,4 +87,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#status" do
+    subject { client.status }
+
+    it { is_expected.to be_a RitoPlz::API::Status }
+
+    it "creates a status api with the correct region" do
+      expect(RitoPlz::API::Status).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end
