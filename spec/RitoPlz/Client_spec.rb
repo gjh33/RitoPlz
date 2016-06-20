@@ -109,4 +109,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#stats" do
+    subject { client.stats(0) }
+
+    it { is_expected.to be_a RitoPlz::API::Stats }
+
+    it "creates a stats api with the correct region" do
+      expect(RitoPlz::API::Stats).to receive(:new).with(test_region, 0)
+      subject
+    end
+  end
 end
