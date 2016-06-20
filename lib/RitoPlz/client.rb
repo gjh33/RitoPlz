@@ -10,6 +10,7 @@ require 'RitoPlz/API/match'
 require 'RitoPlz/API/match_list'
 require 'RitoPlz/API/stats'
 require 'RitoPlz/API/summoner'
+require 'RitoPlz/API/team'
 
 module RitoPlz
   class Client
@@ -63,6 +64,10 @@ module RitoPlz
 
     def summoner
       RitoPlz::API::Summoner.new(@region)
+    end
+
+    def team
+      RitoPlz::API::Team.new(@region)
     end
   end
 end

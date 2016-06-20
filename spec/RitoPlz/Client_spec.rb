@@ -142,4 +142,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#team" do
+    subject { client.team }
+
+    it { is_expected.to be_a RitoPlz::API::Team }
+
+    it "creates a team api with the correct region" do
+      expect(RitoPlz::API::Team).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end
