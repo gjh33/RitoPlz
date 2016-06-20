@@ -87,4 +87,70 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#status" do
+    subject { client.status }
+
+    it { is_expected.to be_a RitoPlz::API::Status }
+
+    it "creates a status api with the correct region" do
+      expect(RitoPlz::API::Status).to receive(:new).with(test_region)
+      subject
+    end
+  end
+
+  describe "#match" do
+    subject { client.match }
+
+    it { is_expected.to be_a RitoPlz::API::Match }
+
+    it "creates a match api with the correct region" do
+      expect(RitoPlz::API::Match).to receive(:new).with(test_region)
+      subject
+    end
+  end
+
+  describe "#match_list" do
+    subject { client.match_list }
+
+    it { is_expected.to be_a RitoPlz::API::MatchList }
+
+    it "creates a match list api with the correct region" do
+      expect(RitoPlz::API::MatchList).to receive(:new).with(test_region)
+      subject
+    end
+  end
+
+  describe "#stats" do
+    subject { client.stats(0) }
+
+    it { is_expected.to be_a RitoPlz::API::Stats }
+
+    it "creates a stats api with the correct region" do
+      expect(RitoPlz::API::Stats).to receive(:new).with(test_region, 0)
+      subject
+    end
+  end
+
+  describe "#summoner" do
+    subject { client.summoner }
+
+    it { is_expected.to be_a RitoPlz::API::Summoner }
+
+    it "creates a summoner api with the correct region" do
+      expect(RitoPlz::API::Summoner).to receive(:new).with(test_region)
+      subject
+    end
+  end
+
+  describe "#team" do
+    subject { client.team }
+
+    it { is_expected.to be_a RitoPlz::API::Team }
+
+    it "creates a team api with the correct region" do
+      expect(RitoPlz::API::Team).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end

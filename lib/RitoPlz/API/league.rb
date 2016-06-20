@@ -8,25 +8,25 @@ module RitoPlz
         @region = region
       end
 
-      def by_player_ids(ids)
+      def by_player_ids(*ids)
         ids_string = ids.join(',')
         request = Request.new(@region, api_path("/by-summoner/#{ids_string}"))
         request.get
       end
 
-      def entries_by_player_ids(ids)
+      def entries_by_player_ids(*ids)
         ids_string = ids.join(',')
         request = Request.new(@region, api_path("/by-summoner/#{ids_string}/entry"))
         request.get
       end
 
-      def by_team_ids(ids)
+      def by_team_ids(*ids)
         ids_string = ids.join(',')
         request = Request.new(@region, api_path("/by-team/#{ids_string}"))
         request.get
       end
 
-      def entries_by_team_ids(ids)
+      def entries_by_team_ids(*ids)
         ids_string = ids.join(',')
         request = Request.new(@region, api_path("/by-team/#{ids_string}/entry"))
         request.get
