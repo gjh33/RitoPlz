@@ -131,4 +131,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#summoner" do
+    subject { client.summoner }
+
+    it { is_expected.to be_a RitoPlz::API::Summoner }
+
+    it "creates a summoner api with the correct region" do
+      expect(RitoPlz::API::Summoner).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end
