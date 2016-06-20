@@ -39,7 +39,18 @@ module RitoPlz
           base_url = "https://#{region}.api.pvp.net"
         end
 
-        base_url + path + "?#{URI.encode_www_form(query_params)}"
+        final_params = format_params(query_params)
+
+        base_url + path + "?#{URI.encode_www_form(final_params)}"
+      end
+
+      def format_params(query_params)
+        query_params.each do |key, value|
+          if value.is_a?(Array)
+            query_params[key] = value.join(',')
+          end
+        end
+        query_params
       end
 
       def verify_response!(response)

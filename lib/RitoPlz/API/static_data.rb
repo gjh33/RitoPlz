@@ -9,33 +9,21 @@ module RitoPlz
       end
 
       def champions(query_params = {})
-        if query_params[:champData]
-          query_params[:champData] = query_params[:champData].join(',')
-        end
         request = Request.new(@region, api_path("/champion"))
         request.get(query_params)
       end
 
       def champion_by_id(champion_id, query_params = {})
-        if query_params[:champData]
-          query_params[:champData] = query_params[:champData].join(',')
-        end
         request = Request.new(@region, api_path("/champion/#{champion_id}"))
         request.get(query_params)
       end
 
       def items(query_params = {})
-        if query_params[:itemListData]
-          query_params[:itemListData] = query_params[:itemListData].join(',')
-        end
         request = Request.new(@region, api_path("/item"))
         request.get(query_params)
       end
 
       def item_by_id(item_id, query_params = {})
-        if query_params[:itemListData]
-          query_params[:itemListData] = query_params[:itemListData].join(',')
-        end
         request = Request.new(@region, api_path("/item/#{item_id}"))
         request.get(query_params)
       end
@@ -56,17 +44,11 @@ module RitoPlz
       end
 
       def masteries(query_params = {})
-        if query_params[:masteryListData]
-          query_params[:masteryListData] = query_params[:masteryListData].join(',')
-        end
         request = Request.new(@region, api_path("/mastery"))
         request.get(query_params)
       end
 
       def mastery_by_id(mastery_id, query_params = {})
-        if query_params[:masteryListData]
-          query_params[:masteryListData] = query_params[:masteryListData].join(',')
-        end
         request = Request.new(@region, api_path("/mastery/#{mastery_id}"))
         request.get(query_params)
       end
@@ -77,33 +59,21 @@ module RitoPlz
       end
 
       def runes(query_params = {})
-        if query_params[:runeListData]
-          query_params[:runeListData] = query_params[:runeListData].join(',')
-        end
         request = Request.new(@region, api_path("/rune"))
         request.get(query_params)
       end
 
       def rune_by_id(rune_id, query_params = {})
-        if query_params[:runeListData]
-          query_params[:runeListData] = query_params[:runeListData].join(',')
-        end
         request = Request.new(@region, api_path("/rune/#{rune_id}"))
         request.get(query_params)
       end
 
       def summoner_spells(query_params = {})
-        if query_params[:spellData]
-          query_params[:spellData] = query_params[:spellData].join(',')
-        end
         request = Request.new(@region, api_path("/summoner-spell"))
         request.get(query_params)
       end
 
       def summoner_spell_by_id(ss_id, query_params = {})
-        if query_params[:spellData]
-          query_params[:spellData] = query_params[:spellData].join(',')
-        end
         request = Request.new(@region, api_path("/summoner-spell/#{ss_id}"))
         request.get(query_params)
       end

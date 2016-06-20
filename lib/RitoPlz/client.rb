@@ -7,6 +7,7 @@ require 'RitoPlz/API/league'
 require 'RitoPlz/API/static_data'
 require 'RitoPlz/API/status'
 require 'RitoPlz/API/match'
+require 'RitoPlz/API/match_list'
 require 'RitoPlz/API/stats'
 
 module RitoPlz
@@ -49,6 +50,10 @@ module RitoPlz
 
     def match
       RitoPlz::API::Match.new(@region)
+    end
+
+    def match_list
+      RitoPlz::API::MatchList.new(@region)
     end
 
     def stats(player_id)

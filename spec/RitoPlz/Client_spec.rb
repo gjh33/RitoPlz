@@ -110,6 +110,17 @@ describe RitoPlz::Client do
     end
   end
 
+  describe "#match_list" do
+    subject { client.match_list }
+
+    it { is_expected.to be_a RitoPlz::API::MatchList }
+
+    it "creates a match list api with the correct region" do
+      expect(RitoPlz::API::MatchList).to receive(:new).with(test_region)
+      subject
+    end
+  end
+
   describe "#stats" do
     subject { client.stats(0) }
 
