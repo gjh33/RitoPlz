@@ -1,4 +1,5 @@
 require 'net/http'
+require 'json'
 require 'RitoPlz/API/exceptions'
 
 module RitoPlz
@@ -20,9 +21,30 @@ module RitoPlz
         return response
       end
 
-      def post(params = {})
-        uri = URI(request_url)
-        response = Net::HTTP.post_form(uri, params)
+      def post(params, query_params = {})
+        uri = URI(request_url(query_params))
+        req = Net::HTTP::Post.new(uri)
+        req.body = params.to_json
+        req['content-type'] = "application/json"
+
+        response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+          http.request(req)
+        end
+
+        verify_response!(response)
+        return response
+      end
+
+      def put(params, query_params = {})
+        uri = URI(request_url(query_params))
+        req = Net::HTTP::Put.new(uri)
+        req.body = params.to_json
+        req['content-type'] = "application/json"
+
+        response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+          http.request(req)
+        end
+
         verify_response!(response)
         return response
       end

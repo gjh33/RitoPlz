@@ -153,4 +153,15 @@ describe RitoPlz::Client do
       subject
     end
   end
+
+  describe "#tournament" do
+    subject { client.tournament }
+
+    it { is_expected.to be_a RitoPlz::API::Tournament }
+
+    it "creates a tournament api with the correct region" do
+      expect(RitoPlz::API::Tournament).to receive(:new).with(test_region)
+      subject
+    end
+  end
 end

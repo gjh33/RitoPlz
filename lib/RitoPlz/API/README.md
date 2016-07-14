@@ -60,3 +60,16 @@ client = RitoPlz::Client.new
 client.match_list.by_player_id(beginIndex: 1000, endIndex: 5000, seasons: [:SEASON2014, :SEASON2015, :SEASON2016])
 ```
 The optional parameters are simply passed in as a hash to the endpoint. Easy right? Your arrays are automatically converted to a comma seperated string that Riot's API will receive.
+
+### Tournament API
+Riot's tournament api made it difficult for RitoPlz to use the usual convention. I recommend reading the source code, however I will do my best to explain.
+
+Some API require body and query params. RitoPlz combines these into 1 hash for parameters. If the parameter is a path parameter (in the path for the api call, not params) then it is a mandatory parameter for the method. The only exception being generating a tournament code. For this api, tournamentId is a mandatory param despite it not being part of the path, but part of the body. This choice was made because the other code apis use the tournamentId in the path. Riot's inconsistancy forced my hand here. Here are the method signatures so you can be clear what can be called. Anything in "params" is part of the body or query params. See Riot's official API doc for these values.
+```ruby
+generate_code(tournament_id, params) # Example params: { teamSize: 5, spectatorType: :ALL, pickType: :BLIND_PICK, mapType: :SUMMONERS_RIFT, count: 5 }
+get_code_info(tournament_code)
+update_code_info(tournament_code, params) # Similar params to generate_code. See Riot API for possible params
+get_lobby_events(tournament_code)
+create_provider(params) # Example params: { url: 'http://www.test.com/riot_response_handler' }. you can pass region, but it will default to your client's region if you dont
+create_tournament(params) # Example params: { name: 'MyTournament', providerId: 000 }
+```
