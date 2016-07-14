@@ -9,6 +9,7 @@ RSpec.configure do |config|
     @request_made = false
     @get_request_made = false
     @post_request_made = false
+    @put_request_made = false
     response = double("ResponseDouble")
 
     allow(Net::HTTP).to receive(:get_response) do
@@ -17,9 +18,10 @@ RSpec.configure do |config|
       response
     end
 
-    allow(Net::HTTP).to receive(:post_form) do
+    allow(Net::HTTP).to receive(:start) do
       @request_made = true
       @post_request_made = true
+      @put_request_made = true
       response
     end
 
