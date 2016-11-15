@@ -9,10 +9,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Luke Jones"]
   spec.email         = ["manhappylife@yahoo.ca"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
   spec.summary       = %q{A simple riot api wrapper with the aim of being easy to use and well documented.}
   spec.description   = %q{The aim of RitoPlz is to provide a simple, clean, and easy to use ruby API wrapper. My priority is to provide a gem that is well documented and that you should never get frustrated with. If I fail to meet these goals please open a bug report in GitHub so I can fix the problem.}
   spec.homepage      = "http://github.com/gjh33/RitoPlz"
@@ -25,4 +21,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "rspec"
 end
